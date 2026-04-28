@@ -1,17 +1,31 @@
-from flask import Flask
-from config.db import db
 from dotenv import load_dotenv
 import os
+from flask import Flask
+from config.db import db
+from models import Vehiculo
+from routes.vehiculo_r import vehiculo_bp
 
 load_dotenv()
-
+print("iniciando flask..")
 app = Flask(__name__)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = f"mysql+pymysql://{os.getenv('DB_USER')}:{os.getenv('DB_PASSWORD')}@{os.getenv('DB_HOST')}/{os.getenv('DB_NAME')}"
 
-db.init_app(app)
+user = os.getenv("DB_USER")
+password = os.getenv("DB_PASSWORD") or ""
+host = os.getenv("DB_HOST")
+dbname = os.getenv("DB_NAME")
+
+uri = f"mysql+pymysql://{user}:{password}@{host}/{dbname}"
+
+app.config["SQLALCHEMY_DATABASE_URI"] = uri
+app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+
+db.init_app(app) 
+#rutas:
+app.register_blueprint(vehiculo_bp)
 
 if __name__ == "__main__":
     with app.app_context():
         db.create_all()
+
     app.run(debug=True)

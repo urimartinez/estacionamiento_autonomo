@@ -1,10 +1,7 @@
-class vehiculo:
-    def __init__(self,patente,modelo,marca,año):
-        self.patente=patente
-        self.modelo=modelo
-        self.marca=marca
-        self.año=año
+from config.db import db
 
-    def mostrar_vehiculo(self):
-        return f"patente: {self.patente}, modelo: {self.modelo}, marca: {self.marca}, año: {self.año}"
-    
+class Vehiculo(db.Model):
+    _tablename_ = "vehiculos"
+
+    id = db.Column(db.Integer, primary_key=True)
+    patente = db.Column(db.String(10), unique=True, nullable=False)
