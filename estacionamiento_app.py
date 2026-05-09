@@ -4,9 +4,10 @@ from flask import Flask
 from config.db import db
 from models import Vehiculo
 from routes.vehiculo_r import vehiculo_bp
+from routes.ingreso_r import ingreso_bp
+from models import registrar
 
 load_dotenv()
-print("iniciando flask..")
 app = Flask(__name__)
 
 
@@ -23,6 +24,8 @@ app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 db.init_app(app) 
 #rutas:
 app.register_blueprint(vehiculo_bp)
+app.register_blueprint(ingreso_bp)
+app.register_blueprint(registrar_bp)
 
 if __name__ == "__main__":
     with app.app_context():
