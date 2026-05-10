@@ -14,7 +14,8 @@ def get_vehiculos():
     for v in vehiculos:
         resultado.append({
             "id": v.id,
-            "patente": v.patente
-        })
+            "patente": v.patente,
+            "marca": v.marca,
+            "modelo": v.modelo})
 
     return jsonify(resultado)

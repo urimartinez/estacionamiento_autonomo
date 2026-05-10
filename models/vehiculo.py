@@ -5,4 +5,5 @@ class Vehiculo(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     patente = db.Column(db.String(10), unique=True, nullable=False)
-    
+    marca = db.Column(db.String(20))
+    modelo = db.Column(db.String(20))
