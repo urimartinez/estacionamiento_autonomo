@@ -1,1 +1,1 @@
-from .vehiculo import Vehiculo
+# vacio
