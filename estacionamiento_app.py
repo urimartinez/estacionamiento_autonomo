@@ -3,6 +3,15 @@ from dotenv import load_dotenv
 from config.db import db
 import os
 
+from models.cliente import Cliente
+from models.espacio import Espacio
+from models.tarifa import Tarifa
+
+from routes.ruta_cliente import cliente_bp
+from routes.ruta_espacio import espacio_bp
+from routes.ruta_tarifa import tarifa_bp
+
+
 load_dotenv()
 
 app = Flask(__name__)
@@ -21,6 +30,12 @@ app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 # Inicializar DB
 db.init_app(app)
+
+app.register_blueprint(cliente_bp)
+app.register_blueprint(espacio_bp)
+app.register_blueprint(tarifa_bp)
+
+
 
 if __name__ == "__main__":
     with app.app_context():
