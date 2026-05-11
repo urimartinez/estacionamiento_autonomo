@@ -7,6 +7,8 @@ from config.db import db
 from models.vehiculo import Vehiculo
 from models.ingreso import Ingreso
 from models.egreso import Egreso
+from models.cliente import Cliente
+from models.tarifa import Tarifa
 
 from routes.vehiculo_r import vehiculo_bp
 from routes.ingreso_r import ingreso_bp
