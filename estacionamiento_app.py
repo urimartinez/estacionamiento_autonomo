@@ -3,13 +3,20 @@ from dotenv import load_dotenv
 from config.db import db
 import os
 
+from models.vehiculo import Vehiculo
+from models.egreso import Egreso
+from models.ingreso import Ingreso
 from models.cliente import Cliente
 from models.espacio import Espacio
 from models.tarifa import Tarifa
 
+from routes.vehiculo_r import vehiculo_bp
+from routes.egreso_r import egreso_bp
+from routes.ingreso_r import ingreso_bp
 from routes.ruta_cliente import cliente_bp
 from routes.ruta_espacio import espacio_bp
 from routes.ruta_tarifa import tarifa_bp
+
 
 
 load_dotenv()
@@ -31,6 +38,9 @@ app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 # Inicializar DB
 db.init_app(app)
 
+app.register_blueprint(vehiculo_bp)
+app.register_blueprint(egreso_bp)
+app.register_blueprint(ingreso_bp)
 app.register_blueprint(cliente_bp)
 app.register_blueprint(espacio_bp)
 app.register_blueprint(tarifa_bp)
