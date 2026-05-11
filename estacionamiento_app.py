@@ -8,9 +8,12 @@ from models.vehiculo import Vehiculo
 from models.ingreso import Ingreso
 from models.egreso import Egreso
 
+
+
 from routes.vehiculo_r import vehiculo_bp
 from routes.ingreso_r import ingreso_bp
 from routes.egreso_r import egreso_bp
+
 
 load_dotenv()
 
