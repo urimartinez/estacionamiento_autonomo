@@ -4,7 +4,7 @@ from models.vehiculo import Vehiculo
 
 vehiculo_bp = Blueprint("vehiculo_bp", __name__)
 
-# 🔹 GET: listar vehículos
+# GET: listar vehículos
 @vehiculo_bp.route("/vehiculos", methods=["GET"])
 def get_vehiculos():
     vehiculos = Vehiculo.query.all()
