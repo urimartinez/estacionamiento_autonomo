@@ -18,4 +18,6 @@ def get_vehiculos():
             "marca": v.marca,
             "modelo": v.modelo})
 
-    return jsonify(resultado)
+    return jsonify({
+        "mensaje": "Lista de vehículos",
+        "vehiculos":resultado})
