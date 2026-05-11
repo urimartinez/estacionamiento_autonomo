@@ -1,1 +1,1 @@
-# vacio
+db.init_app(app)

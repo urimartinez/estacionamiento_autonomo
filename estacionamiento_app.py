@@ -1,5 +1,6 @@
 from flask import Flask
 from dotenv import load_dotenv
+from config.db import db
 import os
 
 load_dotenv()
