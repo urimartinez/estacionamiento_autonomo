@@ -7,12 +7,15 @@ from config.db import db
 from models.vehiculo import Vehiculo
 from models.ingreso import Ingreso
 from models.egreso import Egreso
+from models.cliente import Cliente
+from models.tarifa import Tarifa
 
 
 
 from routes.vehiculo_r import vehiculo_bp
 from routes.ingreso_r import ingreso_bp
 from routes.egreso_r import egreso_bp
+from routes.ruta_tarifa import tarifa_bp
 
 
 load_dotenv()
@@ -38,6 +41,7 @@ db.init_app(app)
 app.register_blueprint(vehiculo_bp)
 app.register_blueprint(ingreso_bp)
 app.register_blueprint(egreso_bp)
+app.register_blueprint(tarifa_bp)
 
 
 if __name__ == "__main__":
