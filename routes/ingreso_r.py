@@ -36,7 +36,7 @@ def registrar_ingreso():
         return jsonify({"error": "Falta vehiculo_id"}), 400
 
     # opcional: verificar que exista el vehículo
-    vehiculo = vehiculo.query.get(vehiculo_id)
+    vehiculo = Vehiculo.query.get(vehiculo_id)
 
     if not vehiculo:
         return jsonify({"error": "Vehículo no existe"}), 404
