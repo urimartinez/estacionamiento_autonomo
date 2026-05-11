@@ -1,1 +1,1 @@
-db.init_app(app)
+#archivo init models
