@@ -2,6 +2,7 @@ from flask import Blueprint, request, jsonify
 from models.ingreso import Ingreso
 from config.db import db
 from datetime import datetime
+from models.vehiculo import Vehiculo
 
 ingreso_bp = Blueprint("ingreso_bp", __name__)
 
@@ -39,7 +40,11 @@ def registrar_ingreso():
 
     if not vehiculo:
         return jsonify({"error": "Vehículo no existe"}), 404
-
+    existe = Ingreso.query.filter_by(
+        vehiculo_id=vehiculo_id
+    ).first()
+    if existe:
+        return jsonify({"error": "El vehiculo ya ingreso"}),400
     nuevo = Ingreso(
         vehiculo_id=vehiculo_id,
         hora_ingreso=datetime.now()
