@@ -9,9 +9,21 @@ egreso_bp = Blueprint("egreso_bp", __name__)
 @egreso_bp.route("/egresos", methods=["GET"])
 def listar():
     datos = Egreso.query.all()
-    return jsonify([i.serialize() for i in datos])
+    resultado = []
+    for e in datos:
+        resultado.append({
+            "id": e.id,
+            "vehiculo_id": e.vehiculo_id,
+            "hora_salida": e.hora_salida,
+            "horas": e.horas,
+            "total": e.total
+        
+        })
+    return jsonify({
+        "mensaje": "Lista de egresos",
+        "egresos": resultado})
 
-
+# POST:
 @egreso_bp.route("/egreso/<int:vehiculo_id>", methods=["POST"])
 def registrar_egreso(vehiculo_id):
 
