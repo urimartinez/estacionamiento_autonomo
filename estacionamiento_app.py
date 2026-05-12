@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask,render_template
 from dotenv import load_dotenv
 from config.db import db
 import os
@@ -45,7 +45,9 @@ app.register_blueprint(cliente_bp)
 app.register_blueprint(espacio_bp)
 app.register_blueprint(tarifa_bp)
 
-
+@app.route("/admin")
+def admin():
+    return "funciona"
 
 if __name__ == "__main__":
     with app.app_context():
